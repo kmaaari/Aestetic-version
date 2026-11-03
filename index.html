@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Кирилл & Мария — свадебное приглашение</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@300;400;500&display=swap');
+
+    :root {
+      --wine: #873e4c;
+      --ink: #342b27;
+      --muted: #75665d;
+      --paper: #f8f4e9;
+      --line: #c9bbae;
+      --serif: "Cormorant Garamond", "Baskerville", Georgia, serif;
+      --display: "Cormorant Garamond", "Didot", Georgia, serif;
+      --sans: "Manrope", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: var(--serif);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255,248,235,.35), transparent 42%),
+        linear-gradient(125deg, #827064, #665046 52%, #493831);
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 64px 20px 56px;
+    }
+
+    .hero {
+      color: #fff8ee;
+      text-align: center;
+      margin: 0 auto 58px;
+    }
+
+    .hero__title {
+      margin: 0;
+      font: 400 clamp(23px, 4vw, 42px)/1.1 var(--display);
+      letter-spacing: .025em;
+      text-transform: uppercase;
+    }
+
+    .hero__script {
+      margin: -1px 0 25px;
+      font: italic clamp(37px, 6vw, 65px)/1.1 var(--serif);
+      letter-spacing: .02em;
+    }
+
+    .hero__contact {
+      display: inline-block;
+      padding: 7px 17px;
+      color: #fffaf1;
+      background: rgba(91,39,52,.92);
+      font-size: 13px;
+      letter-spacing: .08em;
+    }
+
+    .invitation {
+      width: min(760px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .sheet {
+      position: relative;
+      min-width: 0;
+      padding: 34px clamp(24px, 3vw, 42px);
+      background: var(--paper);
+      box-shadow: 0 24px 55px rgba(24,14,10,.2);
+    }
+
+    .sheet::before {
+      position: absolute;
+      content: "";
+      inset: 11px;
+      border: 1px solid rgba(125,91,75,.2);
+      pointer-events: none;
+    }
+
+    .sheet > * { position: relative; }
+
+    .eyebrow {
+      margin: 0 0 15px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .names {
+      margin: 18px 0 22px;
+      text-align: center;
+      font: 400 clamp(34px, 3.7vw, 50px)/.98 var(--display);
+      letter-spacing: -.025em;
+    }
+
+    .date {
+      margin: 18px 0;
+      color: var(--wine);
+      text-align: center;
+      font: 400 clamp(32px, 3.4vw, 43px)/.98 var(--display);
+      letter-spacing: .045em;
+    }
+
+    .date span { display: block; }
+
+    .illustration {
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      margin: 28px auto;
+      color: var(--ink);
+    }
+
+    .intro {
+      margin: 28px 0 10px;
+      text-align: center;
+      font-size: 17px;
+    }
+
+    .copy {
+      max-width: 285px;
+      margin: 12px auto 25px;
+      color: #554941;
+      text-align: center;
+      font-size: 12.5px;
+      line-height: 1.65;
+    }
+
+    .date-strip {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 24px 0 30px;
+      color: var(--wine);
+      font-size: 17px;
+    }
+
+    .date-strip span { padding: 5px 2px; }
+
+    .date-strip__active {
+      padding: 12px 9px !important;
+      color: white;
+      background: var(--wine);
+      border-radius: 50%;
+      font-size: 14px;
+      transform: rotate(2deg);
+    }
+
+    .section-title {
+      margin: 38px 0 20px;
+      text-align: center;
+      font: 400 25px/1.2 var(--display);
+    }
+
+    .location {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin: 24px 0 32px;
+    }
+
+    .location__mark {
+      display: grid;
+      width: 82px;
+      height: 82px;
+      place-items: center;
+      border: 1px solid #b6a79a;
+      border-radius: 50%;
+      color: var(--wine);
+      font-size: 36px;
+    }
+
+    .location__name {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 400;
+    }
+
+    .location__text {
+      margin: 7px 0 12px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      background: var(--wine);
+      font: 11px var(--serif);
+      letter-spacing: .07em;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 26px 0 32px;
+      padding: 4px 0;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 12px;
+      bottom: 12px;
+      left: 50%;
+      border-left: 1px dashed #a99a8e;
+      content: "";
+    }
+
+    .event {
+      position: relative;
+      width: 50%;
+      min-height: 112px;
+      padding: 12px 18px 19px 0;
+    }
+
+    .event:nth-child(even) {
+      margin-left: 50%;
+      padding: 12px 0 19px 18px;
+    }
+
+    .event::after {
+      position: absolute;
+      top: 17px;
+      right: -8px;
+      color: var(--wine);
+      background: var(--paper);
+      content: "♡";
+      font-size: 16px;
+    }
+
+    .event:nth-child(even)::after {
+      right: auto;
+      left: -8px;
+    }
+
+    .event__symbol {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 22px;
+      filter: saturate(.55);
+    }
+
+    .event__time {
+      display: block;
+      color: var(--wine);
+      font: 400 23px var(--display);
+    }
+
+    .event__name {
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .palette {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 22px 0 30px;
+    }
+
+    .palette span {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(0,0,0,.1);
+      border-radius: 50%;
+      box-shadow: 0 2px 5px rgba(0,0,0,.08);
+    }
+
+    .request {
+      margin: 24px 0;
+      padding: 23px 20px;
+      border: 1px solid #b9a99b;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .request::before {
+      display: block;
+      margin-top: -34px;
+      color: var(--wine);
+      background: var(--paper);
+      content: "♡";
+      font-size: 18px;
+    }
+
+    .rsvp {
+      margin-top: 24px;
+    }
+
+    .field { margin: 17px 0; }
+
+    .field__label,
+    .field__question {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+    }
+
+    .text-input,
+    .textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #c4b5a8;
+      border-radius: 999px;
+      outline: none;
+      color: var(--ink);
+      background: transparent;
+      font: 13px var(--serif);
+    }
+
+    .textarea {
+      min-height: 76px;
+      border-radius: 14px;
+      resize: vertical;
+    }
+
+    .text-input:focus,
+    .textarea:focus { border-color: var(--wine); }
+
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 10px 0;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .choice input { accent-color: var(--wine); }
+
+    .footer {
+      margin: 55px auto 0;
+      color: #f9f0e6;
+      text-align: center;
+      line-height: 1.6;
+      letter-spacing: .04em;
+    }
+
+    .footer__script {
+      margin: 0 0 5px;
+      font: italic clamp(30px, 4vw, 42px) var(--serif);
+    }
+
+
+    /* RSVP: editorial type + elegant selectable cards */
+    .hero__title,
+    .names,
+    .date,
+    .section-title,
+    .event__time {
+      font-family: var(--display);
+      font-weight: 400;
+    }
+
+    body, .copy, .intro, .location__text, .event__name {
+      font-family: var(--serif);
+    }
+
+    .hero__contact,
+    .eyebrow,
+    .field__label,
+    .field__question,
+    .answer-card__sub,
+    .drink-chip,
+    .button {
+      font-family: var(--sans);
+    }
+
+    .rsvp {
+      padding-top: 8px;
+    }
+
+    .field {
+      margin: 22px 0 25px;
+    }
+
+    .field__label,
+    .field__question {
+      margin-bottom: 12px;
+      color: #6e5c52;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .text-input,
+    .textarea {
+      padding: 13px 2px;
+      border: 0;
+      border-bottom: 1px solid #bca99b;
+      border-radius: 0;
+      background: transparent;
+      font: 500 18px var(--serif);
+      transition: border-color .2s ease;
+    }
+
+    .text-input::placeholder,
+    .textarea::placeholder {
+      color: #b6a89e;
+      font-style: italic;
+    }
+
+    .textarea {
+      min-height: 88px;
+      border: 1px solid #d1c4b8;
+      padding: 12px 14px;
+      border-radius: 2px;
+    }
+
+    .answer-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+    }
+
+    .answer-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      gap: 2px 12px;
+      padding: 13px 15px;
+      border: 1px solid #d5c8bc;
+      background: rgba(255,255,255,.24);
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+
+    .answer-card:hover {
+      border-color: #a98787;
+      transform: translateY(-1px);
+    }
+
+    .answer-card input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .answer-card__mark {
+      grid-row: 1 / 3;
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      border: 1px solid #cbbab0;
+      border-radius: 50%;
+      color: var(--wine);
+      font: 10px var(--sans);
+      transition: all .2s;
+    }
+
+    .answer-card__text {
+      font: 500 18px/1.15 var(--serif);
+      color: var(--ink);
+    }
+
+    .answer-card__sub {
+      color: #8a7a70;
+      font-size: 9px;
+      letter-spacing: .04em;
+    }
+
+    .answer-card:has(input:checked) {
+      border-color: var(--wine);
+      background: #f0e7df;
+    }
+
+    .answer-card:has(input:checked) .answer-card__mark {
+      color: white;
+      background: var(--wine);
+      border-color: var(--wine);
+    }
+
+    .drink-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .drink-chip {
+      position: relative;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: .025em;
+    }
+
+    .drink-chip input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .drink-chip span {
+      display: inline-flex;
+      min-height: 37px;
+      align-items: center;
+      padding: 8px 13px;
+      border: 1px solid #d3c5b9;
+      border-radius: 999px;
+      color: #6d5c53;
+      background: rgba(255,255,255,.2);
+      transition: all .2s;
+    }
+
+    .drink-chip:hover span {
+      border-color: #a98787;
+    }
+
+    .drink-chip:has(input:checked) span {
+      color: white;
+      border-color: var(--wine);
+      background: var(--wine);
+    }
+
+    .button {
+      padding: 13px 26px;
+      font-size: 9px;
+      letter-spacing: .14em;
+    }
+
+    @media (max-width: 480px) {
+      .answer-card { padding: 12px; }
+      .answer-card__text { font-size: 17px; }
+      .drink-options { gap: 7px; }
+      .drink-chip span { padding: 8px 11px; }
+    }
+
+    @media (max-width: 850px) {
+      .page { padding: 34px 13px 45px; }
+      .hero { margin-bottom: 36px; }
+      .invitation {
+        max-width: 560px;
+        gap: 17px;
+      }
+      .sheet { padding: 36px clamp(26px, 8vw, 50px); }
+      .names { font-size: 46px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <p class="hero__script">Приглашаем вас</p>
+      <h1 class="hero__title">на нашу свадьбу</h1>
+    </header>
+
+    <main class="invitation">
+      <section class="sheet">
+        <p class="eyebrow">Мы женимся!</p>
+        <h2 class="names">Кирилл &<br>Мария</h2>
+        <div class="date"><span>21</span><span>09</span><span>2026</span></div>
+
+        <svg class="illustration" viewBox="0 0 320 235" role="img" aria-label="Праздничный стол" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M30 105 Q160 78 290 105 L278 180 Q160 211 42 180 Z"/>
+          <path d="M42 180 L30 222 M278 180 L291 222 M78 186 L85 225 M244 186 L237 225"/>
+          <path d="M20 113 Q12 83 28 70 Q43 65 54 90 L55 164 Q45 182 29 170 Z M265 92 Q276 63 291 72 Q306 86 296 112 L291 171 Q278 184 267 165 Z"/>
+          <path d="M14 120 L54 120 M264 120 L303 120 M17 141 L53 141 M267 141 L301 141"/>
+          <path d="M130 99 Q150 88 170 99 L185 145 Q160 162 130 145 Z"/>
+          <path d="M151 95 L151 60 M145 60 L157 60 M151 60 Q132 42 142 31 Q152 42 151 60 M151 60 Q171 40 179 52 Q166 66 151 60"/>
+          <path d="M83 111 Q100 95 117 111 L111 142 Q99 150 88 141 Z M203 111 Q220 95 237 111 L231 142 Q219 150 208 141 Z"/>
+          <circle cx="160" cy="119" r="7"/>
+        </svg>
+
+        <p class="intro">Дорогие родные и близкие!</p>
+        <p class="copy">Этим летом произойдёт важное событие — мы станем семьёй. И нам очень хочется разделить этот день с вами!</p>
+        <div class="date-strip">
+          <span>19</span><span>20</span><span class="date-strip__active">21.09</span><span>22</span><span>23</span>
+        </div>
+
+        <div class="location">
+          <div class="location__mark">♧</div>
+          <div>
+            <h3 class="location__name">Локация:<br>«We Lodge»</h3>
+            <p class="location__text">Наша свадьба пройдёт в уютном загородном месте среди природы и близких людей.</p>
+            <a class="button" href="#details">Открыть детали</a>
+          </div>
+        </div>
+        <h3 class="section-title">Будем ждать вас!</h3>
+        <p class="copy">Пожалуйста, подтвердите присутствие в анкете — это поможет нам всё подготовить.</p>
+      </section>
+
+      <section class="sheet">
+        <h2 class="section-title" style="margin-top:0">Расписание нашего дня</h2>
+        <div class="timeline">
+          <div class="event"><span class="event__symbol">♧</span><time class="event__time">15:00</time><span class="event__name">Сбор гостей</span></div>
+          <div class="event"><span class="event__symbol">♡</span><time class="event__time">16:00</time><span class="event__name">Церемония</span></div>
+          <div class="event"><span class="event__symbol">✧</span><time class="event__time">17:00</time><span class="event__name">Банкет</span></div>
+          <div class="event"><span class="event__symbol">♧</span><time class="event__time">21:00</time><span class="event__name">Торт</span></div>
+          <div class="event"><span class="event__symbol">✦</span><time class="event__time">23:00</time><span class="event__name">Завершение</span></div>
+        </div>
+
+        <h2 class="section-title">Дресс-код</h2>
+        <p class="copy">Нам очень хочется сохранить единую атмосферу вечера, поэтому будем рады поддержке нашей цветовой гаммы:</p>
+        <div class="palette" aria-label="Цветовая палитра">
+          <span style="background:#d8cbb6"></span>
+          <span style="background:#d9b7b5"></span>
+          <span style="background:#94817b"></span>
+          <span style="background:#a1a394"></span>
+          <span style="background:#48433f"></span>
+        </div>
+
+        <div class="request">Главное — чтобы вам было комфортно и празднично. Спасибо, что поддерживаете нашу идею!</div>
+        <h2 class="section-title">Небольшая просьба</h2>
+        <p class="copy">Пожалуйста, приходите немного заранее, чтобы мы могли начать церемонию вовремя и провести этот день без спешки.</p>
+      </section>
+
+      <section class="sheet" id="details">
+        <h2 class="section-title" style="margin-top:0">Детали</h2>
+        <svg class="illustration" viewBox="0 0 320 135" role="img" aria-label="Цветы и подарки" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M25 110 L25 63 Q48 52 70 63 L70 110 Z M36 62 Q46 42 59 62 M48 52 Q30 33 42 25 Q54 34 48 52 M48 52 Q63 31 72 42 Q67 54 48 52"/>
+          <path d="M112 108 L112 78 L164 78 L164 108 Z M105 78 L171 78 L164 68 L112 68 Z M138 68 Q118 52 127 45 Q140 44 138 68 Q145 45 157 50 Q161 61 138 68"/>
+          <path d="M190 108 L190 75 L239 75 L239 108 Z M184 75 L245 75 L239 66 L190 66 Z M215 66 Q194 50 205 43 Q218 43 215 66 Q226 44 237 50 Q238 61 215 66"/>
+          <path d="M270 108 L270 82 L300 82 L300 108 Z M265 82 L305 82 L300 75 L270 75 Z"/>
+        </svg>
+
+        <p class="copy">Чтобы наши руки были свободны для объятий, будем рады лёгким подаркам в конвертах.</p>
+        <div class="request">Просим не дарить нам цветы — лучшим дополнением станет бутылочка вина или любимого напитка с вашими пожеланиями.</div>
+        <p class="copy">По всем вопросам обращайтесь к нашему организатору. Мы с радостью поможем вам!</p>
+
+        <h2 class="section-title">Анкета гостя</h2>
+        <p class="copy">Пожалуйста, заполните анкету до 01.07.2026 — это очень поможет нам в подготовке.</p>
+
+        <form class="rsvp">
+          <div class="field">
+            <label class="field__label" for="guest-name">Ваше имя и фамилия</label>
+            <input class="text-input" id="guest-name" name="guest" type="text" placeholder="Имя Фамилия">
+          </div>
+          <fieldset class="field option-group">
+            <legend class="field__question">Будете ли вы с нами в этот день?</legend>
+            <div class="answer-cards">
+              <label class="answer-card">
+                <input type="radio" name="attendance" value="yes">
+                <span class="answer-card__mark">01</span>
+                <span class="answer-card__text">С удовольствием буду</span>
+                <span class="answer-card__sub">Уже считаю дни ♡</span>
+              </label>
+              <label class="answer-card">
+                <input type="radio" name="attendance" value="no">
+                <span class="answer-card__mark">02</span>
+                <span class="answer-card__text">К сожалению, не смогу</span>
+                <span class="answer-card__sub">Буду мысленно с вами</span>
+              </label>
+            </div>
+          </fieldset>
+          <fieldset class="field option-group">
+            <legend class="field__question">Что предпочитаете из напитков?</legend>
+            <div class="drink-options">
+              <label class="drink-chip"><input type="checkbox" name="drink" value="sparkling"><span>Игристое</span></label>
+              <label class="drink-chip"><input type="checkbox" name="drink" value="white"><span>Белое вино</span></label>
+              <label class="drink-chip"><input type="checkbox" name="drink" value="red"><span>Красное вино</span></label>
+              <label class="drink-chip"><input type="checkbox" name="drink" value="non-alcoholic"><span>Без алкоголя</span></label>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label class="field__label" for="wishes">Пожелания или комментарии</label>
+            <textarea class="textarea" id="wishes" name="wishes" placeholder="Напишите здесь..."></textarea>
+          </div>
+          <button class="button" type="button">Отправить ответ</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__script">С любовью, Кирилл и Мария</p>
+      Будем счастливы разделить этот день с вами
+    </footer>
+  </div>
+</body>
+</html>
